@@ -12,6 +12,9 @@ logs/
 .gitattributes
 **/.gitattributes
 
+# Maven build output
+**/target/
+
 # Node.js specific (if using Node)
 node_modules/
 dist/
