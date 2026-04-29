@@ -256,6 +256,21 @@ services:
       - backend
     restart: on-failure
 
+  sap-integration-service:
+    image: kuturogi1/sap-integration-service
+    container_name: sap-integration-service
+    ports:
+      - "8085:8085"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    depends_on:
+      - kafka
+      - eureka
+      - config-server
+    networks:
+      - backend
+    restart: on-failure
+
   read:
     image: grafana/loki:latest
     command: "-config.file=/etc/loki/config.yaml -target=read"

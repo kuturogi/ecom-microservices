@@ -35,6 +35,18 @@
 server:
   port: 8080
 
+springdoc:
+  swagger-ui:
+    urls:
+      - name: product-service
+        url: /product-service/v3/api-docs
+      - name: user-service
+        url: /user-service/v3/api-docs
+      - name: order-service
+        url: /order-service/v3/api-docs
+      - name: sap-integration-service
+        url: /sap-integration-service/v3/api-docs
+
 #logging:
 #  level:
 #    root: info

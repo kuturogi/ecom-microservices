@@ -25,6 +25,18 @@ public class SecurityConfig {
         return http
                 .csrf(ServerHttpSecurity.CsrfSpec::disable)
                 .authorizeExchange(exchange -> exchange
+                        .pathMatchers(
+                                "/swagger-ui.html",
+                                "/swagger-ui/**",
+                                "/v3/api-docs/**",
+                                "/product-service/v3/api-docs",
+                                "/user-service/v3/api-docs",
+                                "/order-service/v3/api-docs",
+                        "/sap-integration-service/v3/api-docs",
+                                "/webjars/**",
+                                "/fallback/**",
+                                "/eureka/**"
+                        ).permitAll()
 //                        .pathMatchers("/api/products/**").hasRole("PRODUCT")
 //                        .pathMatchers("/api/orders/**").hasRole("ORDER")
 //                        .pathMatchers("/api/users/**").hasRole("USER")

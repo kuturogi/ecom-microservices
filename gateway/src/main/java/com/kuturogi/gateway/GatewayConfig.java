@@ -51,6 +51,25 @@ public class GatewayConfig {
 //                        .filters(f -> f.rewritePath("/(?<segment>.*)",
 //                                "/api/${segment}"))
                         .uri("lb://ORDER-SERVICE"))
+                .route("sap-integration-service", r -> r
+                        .path("/api/sap/**")
+                        .uri("lb://SAP-INTEGRATION-SERVICE"))
+                .route("sap-integration-service-docs", r -> r
+                        .path("/sap-integration-service/v3/api-docs")
+                        .filters(f -> f.rewritePath("/sap-integration-service/v3/api-docs", "/v3/api-docs"))
+                        .uri("lb://SAP-INTEGRATION-SERVICE"))
+                .route("product-service-docs", r -> r
+                        .path("/product-service/v3/api-docs")
+                        .filters(f -> f.rewritePath("/product-service/v3/api-docs", "/v3/api-docs"))
+                        .uri("lb://PRODUCT-SERVICE"))
+                .route("user-service-docs", r -> r
+                        .path("/user-service/v3/api-docs")
+                        .filters(f -> f.rewritePath("/user-service/v3/api-docs", "/v3/api-docs"))
+                        .uri("lb://USER-SERVICE"))
+                .route("order-service-docs", r -> r
+                        .path("/order-service/v3/api-docs")
+                        .filters(f -> f.rewritePath("/order-service/v3/api-docs", "/v3/api-docs"))
+                        .uri("lb://ORDER-SERVICE"))
                 .route("eureka-server", r -> r
                         .path("/eureka/main")
                         .filters(f -> f.rewritePath("/eureka/main", "/"))
